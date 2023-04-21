@@ -5,7 +5,7 @@
 
 <f:if condition="{status}">
     <h2>
-        <f:translate key="module_search_status"/>
+        Status
     </h2>
     <ldap:configurationTable data="{status}" humanKeyNames="1"/>
 </f:if>
@@ -13,14 +13,14 @@
 <f:if condition="{preview}">
     <f:then>
         <h2>
-            <f:translate key="module_search_preview"/>
+            Preview
         </h2>
         <ldap:configurationTable data="{preview}"/>
     </f:then>
 </f:if>
 
 <h2>
-    <f:translate key="module_search_result"/>
+    Result
 </h2>
 <f:if condition="{resultset}">
     <f:then>
@@ -28,7 +28,7 @@
     </f:then>
     <f:else>
         <em>
-            <f:translate key="module_search_noResult"/>
+		No Results for Search
         </em>
     </f:else>
 </f:if>
