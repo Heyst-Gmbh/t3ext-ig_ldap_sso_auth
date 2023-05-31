@@ -20,11 +20,11 @@ class Typo3Utility
 	public static function getTypo3Mode(): string
 	{
 		if (($GLOBALS['TYPO3_REQUEST'] ?? null) instanceof \Psr\Http\Message\ServerRequestInterface
-			&& \TYPO3\CMS\Core\Http\ApplicationType::fromRequest($GLOBALS['TYPO3_REQUEST'])->isFrontend()
+			&& \TYPO3\CMS\Core\Http\ApplicationType::fromRequest($GLOBALS['TYPO3_REQUEST'])->isBackend()
 		) {
-			return self::FE;
+			return self::BE;
 		}
 
-		return self::BE;
+		return self::FE;
 	}
 }

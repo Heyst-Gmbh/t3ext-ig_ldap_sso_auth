@@ -71,6 +71,7 @@ CREATE TABLE be_users (
 # Table structure for table 'fe_groups'
 #
 CREATE TABLE fe_groups (
+    title varchar(255) DEFAULT '' NOT NULL,
 	tx_igldapssoauth_dn varchar(255) DEFAULT '' NOT NULL,
 
 	KEY title (title),

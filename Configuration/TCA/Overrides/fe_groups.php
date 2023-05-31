@@ -14,3 +14,5 @@ $tempColumns = [
 ];
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('fe_groups', $tempColumns);
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes('fe_groups', 'tx_igldapssoauth_dn');
+$GLOBALS['TCA']['fe_groups']['columns']['title']['config']['size'] = 255;
+$GLOBALS['TCA']['fe_groups']['columns']['title']['config']['max'] = 255;
