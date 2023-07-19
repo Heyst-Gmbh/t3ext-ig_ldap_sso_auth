@@ -17,6 +17,7 @@ namespace Causal\IgLdapSsoAuth\Domain\Repository;
 use TYPO3\CMS\Core\Crypto\Random;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Persistence\Repository;
 use Causal\IgLdapSsoAuth\Exception\InvalidUserTableException;
 use Causal\IgLdapSsoAuth\Library\Configuration;
 use Causal\IgLdapSsoAuth\Utility\NotificationUtility;
@@ -29,7 +30,7 @@ use Causal\IgLdapSsoAuth\Utility\NotificationUtility;
  * @package    TYPO3
  * @subpackage ig_ldap_sso_auth
  */
-class Typo3UserRepository
+class Typo3UserRepository extends Repository
 {
 
     /**
