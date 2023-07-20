@@ -20,6 +20,7 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 use Causal\IgLdapSsoAuth\Exception\InvalidUserTableException;
 use Causal\IgLdapSsoAuth\Library\Configuration;
 use Causal\IgLdapSsoAuth\Utility\NotificationUtility;
+use TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException;
 
 /**
  * Class Typo3UserRepository for the 'ig_ldap_sso_auth' extension.
@@ -426,6 +427,14 @@ class Typo3UserRepository
         $password = GeneralUtility::makeInstance(Random::class)->generateRandomBytes(16);
 
         return $instance->getHashedPassword($password);
+    }
+
+    public function findByUid($uid): array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface {
+        $query = $this->createQuery();
+        $query->matching(
+            $query->equals('uid', $uid)
+        );
+        return $query->execute();
     }
 
 }
