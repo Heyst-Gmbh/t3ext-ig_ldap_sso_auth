@@ -432,8 +432,7 @@ class Typo3UserRepository
 
         return $instance->getHashedPassword($password);
     }
-
-/*
+    
     public function findByUid($uid): array|QueryResultInterface {
 
         $connection = GeneralUtility::makeInstance(ConnectionPool::class)
@@ -451,5 +450,5 @@ class Typo3UserRepository
         return $query->execute()->fetchAll();
 
     }
-*/
+
 }
