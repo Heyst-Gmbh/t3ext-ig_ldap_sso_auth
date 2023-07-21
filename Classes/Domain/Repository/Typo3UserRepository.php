@@ -446,7 +446,7 @@ class Typo3UserRepository
             ->from('fe_users')
             ->where('uid', $uid);
 
-        return $query->execute()->fetchAll();
+        return $query->execute()->fetchOne();
 
 
     }
