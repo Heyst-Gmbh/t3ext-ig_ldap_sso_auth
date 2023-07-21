@@ -14,7 +14,6 @@
 
 namespace Causal\IgLdapSsoAuth\Domain\Repository;
 
-use Causal\IgLdapSsoAuth\Domain\Model\FrontendUser;
 use TYPO3\CMS\Core\Crypto\Random;
 use TYPO3\CMS\Core\Database\Connection;
 use TYPO3\CMS\Core\Database\ConnectionPool;
@@ -435,7 +434,7 @@ class Typo3UserRepository
     }
 
 
-    public function findByUid($uid): FrontendUser {
+    public function findByUid($uid): array|QueryResultInterface {
 
 
         $connection = GeneralUtility::makeInstance(ConnectionPool::class)
