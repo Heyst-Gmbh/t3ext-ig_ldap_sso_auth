@@ -433,8 +433,8 @@ class Typo3UserRepository
         return $instance->getHashedPassword($password);
     }
 
-
-    public function findByUid($uid): \Causal\IgLdapSsoAuth\Domain\Model\FrontendUser {
+/*
+    public function findByUid($uid): array|QueryResultInterface {
 
         $connection = GeneralUtility::makeInstance(ConnectionPool::class)
             ->getConnectionForTable('fe_users');
@@ -451,5 +451,5 @@ class Typo3UserRepository
         return $query->execute()->fetchAll();
 
     }
-
+*/
 }
