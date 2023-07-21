@@ -14,6 +14,7 @@
 
 namespace Causal\IgLdapSsoAuth\Domain\Repository;
 
+use Causal\IgLdapSsoAuth\Domain\Model\FrontendUser;
 use TYPO3\CMS\Core\Crypto\Random;
 use TYPO3\CMS\Core\Database\Connection;
 use TYPO3\CMS\Core\Database\ConnectionPool;
@@ -432,8 +433,10 @@ class Typo3UserRepository
 
         return $instance->getHashedPassword($password);
     }
-    
-    public function findByUid($uid): array|QueryResultInterface {
+
+
+    public function findByUid($uid): FrontendUser {
+
 
         $connection = GeneralUtility::makeInstance(ConnectionPool::class)
             ->getConnectionForTable('fe_users');
@@ -448,6 +451,7 @@ class Typo3UserRepository
 
 
         return $query->execute()->fetchAll();
+
 
     }
 
