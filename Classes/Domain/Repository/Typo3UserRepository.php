@@ -31,6 +31,9 @@ use Causal\IgLdapSsoAuth\Utility\NotificationUtility;
  */
 class Typo3UserRepository
 {
+    protected $persistenceManager;
+
+    protected $objectType;
 
     /**
      * Creates a fresh BE/FE user record.
@@ -427,5 +430,16 @@ class Typo3UserRepository
 
         return $instance->getHashedPassword($password);
     }
+
+
+    public function findByUid($uid)
+    {
+        return $this->findByIdentifier($uid);
+     }
+
+    public function findByIdentifier($identifier)
+    {
+        return $this->persistenceManager->getObjectByIdentifier($identifier, $this->objectType);
+     }
 
 }
