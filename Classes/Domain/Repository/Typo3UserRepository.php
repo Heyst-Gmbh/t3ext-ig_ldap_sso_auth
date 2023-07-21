@@ -34,7 +34,7 @@ use TYPO3\CMS\Extbase\Persistence\RepositoryInterface;
  * @package    TYPO3
  * @subpackage ig_ldap_sso_auth
  */
-class Typo3UserRepository extends Repository
+class Typo3UserRepository
 {
 
     /**
@@ -436,11 +436,18 @@ class Typo3UserRepository extends Repository
 
     public function findByUid($uid): array|QueryResultInterface {
 
-        $query = $this->createQuery();
-        $query->matching(
-            $query->equals('uid', $uid)
-        );
-        return $query->execute();
+
+        $connection = GeneralUtility::makeInstance(ConnectionPool::class)
+            ->getConnectionForTable('fe_users');
+
+        $queryBuilder = $connection->createQueryBuilder();
+        $query = $queryBuilder
+            ->select('*')
+            ->from('fe_user')
+            ->where('uid', $uid);
+
+        return $query->execute()->fetchAll();
+
 
     }
 
