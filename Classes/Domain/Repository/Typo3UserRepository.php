@@ -432,7 +432,7 @@ class Typo3UserRepository
     }
 
 
-    public function findByUid($uid) {
+    public function findByUid($uid): array|QueryResultInterface {
         $query = $this->createQuery();
         $query->matching(
             $query->equals('uid', $uid)
