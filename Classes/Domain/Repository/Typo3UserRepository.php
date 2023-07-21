@@ -34,15 +34,8 @@ use TYPO3\CMS\Extbase\Persistence\RepositoryInterface;
  * @package    TYPO3
  * @subpackage ig_ldap_sso_auth
  */
-class Typo3UserRepository
+class Typo3UserRepository extends Repository
 {
-    protected $persistenceManager;
-
-    protected $objectType;
-
-    protected $defaultOrderings = [];
-
-    protected $defaultQuerySettings;
 
     /**
      * Creates a fresh BE/FE user record.
@@ -449,18 +442,6 @@ class Typo3UserRepository
         );
         return $query->execute();
 
-    }
-
-    public function createQuery()
-    {
-        $query = $this->persistenceManager->createQueryForType($this->objectType);
-        if ($this->defaultOrderings !== []) {
-            $query->setOrderings($this->defaultOrderings);
-        }
-        if ($this->defaultQuerySettings !== null) {
-            $query->setQuerySettings(clone $this->defaultQuerySettings);
-        }
-        return $query;
     }
 
 }
