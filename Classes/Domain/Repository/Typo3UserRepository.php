@@ -443,7 +443,7 @@ class Typo3UserRepository
         $queryBuilder = $connection->createQueryBuilder();
         $query = $queryBuilder
             ->select('*')
-            ->from('fe_user')
+            ->from('fe_users')
             ->where('uid', $uid);
 
         return $query->execute()->fetchAll();
