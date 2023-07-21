@@ -444,9 +444,12 @@ class Typo3UserRepository
         $query = $queryBuilder
             ->select('*')
             ->from('fe_users')
-            ->where('uid', $uid);
+            ->where(
+                $queryBuilder->expr()->eq('uid', $uid)
+            );
 
-        return $query->execute()->fetchOne();
+
+        return $query->execute()->fetchAll();
 
 
     }
