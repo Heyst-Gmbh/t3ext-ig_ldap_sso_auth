@@ -36,6 +36,13 @@ use TYPO3\CMS\Extbase\Persistence\RepositoryInterface;
  */
 class Typo3UserRepository
 {
+    protected $persistenceManager;
+
+    protected $objectType;
+
+    protected $defaultOrderings = [];
+
+    protected $defaultQuerySettings;
 
     /**
      * Creates a fresh BE/FE user record.
@@ -435,18 +442,25 @@ class Typo3UserRepository
 
 
     public function findByUid($uid): array|QueryResultInterface {
-        $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class);
-        $row = $queryBuilder
-            ->select('*')
-            ->from('fe_users')
-            ->where(
-                $queryBuilder->expr()->eq('uid', $uid)
-            )
-            ->executeQuery()
-            ->fetchAssociative();
 
+        $query = $this->createQuery();
+        $query->matching(
+            $query->equals('uid', $uid)
+        );
+        return $query->execute();
 
-        return $row->execute();
+    }
+
+    public function createQuery()
+    {
+        $query = $this->persistenceManager->createQueryForType($this->objectType);
+        if ($this->defaultOrderings !== []) {
+            $query->setOrderings($this->defaultOrderings);
+        }
+        if ($this->defaultQuerySettings !== null) {
+            $query->setQuerySettings(clone $this->defaultQuerySettings);
+        }
+        return $query;
     }
 
 }
