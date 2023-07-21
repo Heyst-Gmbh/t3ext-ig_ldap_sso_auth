@@ -434,8 +434,7 @@ class Typo3UserRepository
     }
 
 
-    public function findByUid(\Causal\IgLdapSsoAuth\Domain\Model\FrontendUser $uid) {
-
+    public function findByUid($uid): \Causal\IgLdapSsoAuth\Domain\Model\FrontendUser {
 
         $connection = GeneralUtility::makeInstance(ConnectionPool::class)
             ->getConnectionForTable('fe_users');
@@ -450,7 +449,6 @@ class Typo3UserRepository
 
 
         return $query->execute()->fetchAll();
-
 
     }
 
