@@ -20,6 +20,9 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 use Causal\IgLdapSsoAuth\Exception\InvalidUserTableException;
 use Causal\IgLdapSsoAuth\Library\Configuration;
 use Causal\IgLdapSsoAuth\Utility\NotificationUtility;
+use TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException;
+use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
+use TYPO3\CMS\Extbase\Persistence\Repository;
 
 /**
  * Class Typo3UserRepository for the 'ig_ldap_sso_auth' extension.
@@ -31,9 +34,6 @@ use Causal\IgLdapSsoAuth\Utility\NotificationUtility;
  */
 class Typo3UserRepository
 {
-    protected $persistenceManager;
-
-    protected $objectType;
 
     /**
      * Creates a fresh BE/FE user record.
@@ -432,14 +432,12 @@ class Typo3UserRepository
     }
 
 
-    public function findByUid($uid)
-    {
-        return $this->findByIdentifier($uid);
-     }
-
-    public function findByIdentifier($identifier)
-    {
-        return $this->persistenceManager->getObjectByIdentifier($identifier, $this->objectType);
-     }
+    public function findByUid($uid) {
+        $query = $this->createQuery();
+        $query->matching(
+            $query->equals('uid', $uid)
+        );
+        return $query->execute();
+    }
 
 }
