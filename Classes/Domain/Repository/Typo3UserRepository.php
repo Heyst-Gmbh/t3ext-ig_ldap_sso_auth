@@ -449,7 +449,7 @@ class Typo3UserRepository
             );
 
 
-        return $query->execute()->fetchAll();
+        return $query->execute()->fetch();
 
 
     }
