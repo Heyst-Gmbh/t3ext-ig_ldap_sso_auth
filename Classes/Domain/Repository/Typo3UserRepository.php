@@ -450,9 +450,19 @@ class Typo3UserRepository
             );
 
 
-        return $query->execute();
+        $user = $query->execute()->fetch();
 
 
+        $this->userObj = GeneralUtility::makeInstance(FrontendUser::class);
+
+        foreach ($user as $key => $value)
+        {
+            $this->userObj->$key = $value;
+        }
+        //return $query->execute()->fetch();
+
+
+        return $this->userObj;
     }
 
 }
