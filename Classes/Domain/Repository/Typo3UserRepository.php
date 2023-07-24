@@ -25,6 +25,7 @@ use TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException;
 use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
 use TYPO3\CMS\Extbase\Persistence\Repository;
 use TYPO3\CMS\Extbase\Persistence\RepositoryInterface;
+use Causal\IgLdapSsoAuth\Domain\Model\FrontendUser;
 
 /**
  * Class Typo3UserRepository for the 'ig_ldap_sso_auth' extension.
@@ -434,7 +435,7 @@ class Typo3UserRepository
     }
 
 
-    public function findByUid($uid): array|QueryResultInterface {
+    public function findByUid($uid): FrontendUser {
 
 
         $connection = GeneralUtility::makeInstance(ConnectionPool::class)
