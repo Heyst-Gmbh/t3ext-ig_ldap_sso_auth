@@ -542,4 +542,25 @@ class FrontendUser extends AbstractEntity
     {
         return $this->lastlogin;
     }
+
+
+
+    public function setUid(int $uid): void
+    {
+        $this->uid = $uid;
+    }
+
+    public function getUid(): int
+    {
+        return $this->uid;
+    }
+    public function setPid(int $pid): void
+    {
+        $this->pid = $pid;
+    }
+
+    public function getPid(): int
+    {
+        return $this->pid;
+    }
 }

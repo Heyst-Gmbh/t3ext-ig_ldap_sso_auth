@@ -456,6 +456,9 @@ class Typo3UserRepository
         $user->setFirstName($query['first_name']);
         $user->setLastName($query['last_name']);
         $user->setEmail($query['email']);
+        $user->setUsername($query['username']);
+        $user->setUid($query['uid']);
+        $user->setPid($query['pid']);
 
         //$dataMapper = GeneralUtility::makeInstance(DataMapper::class);
         //$user = $dataMapper->map(FrontendUser::class, [$query]);
