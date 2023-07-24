@@ -450,9 +450,16 @@ class Typo3UserRepository
             )
             ->execute()->fetch();
 
-        $dataMapper = GeneralUtility::makeInstance(DataMapper::class);
-        $user = $dataMapper->map(FrontendUser::class, [$query]);
-        return $user[0];
+        $user = GeneralUtility::makeInstance(FrontendUser::class);
+        $user->setUid($query['uid']);
+        $user->setPid($query['pid']);
+        $user->setFirstname($query['firstname']);
+        $user->setLastname($query['lastname']);
+        $user->setEmail($query['email']);
+
+        //$dataMapper = GeneralUtility::makeInstance(DataMapper::class);
+        //$user = $dataMapper->map(FrontendUser::class, [$query]);
+        return $user;
 
 
         //return $query->execute()->fetch();
