@@ -26,6 +26,7 @@ use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
 use TYPO3\CMS\Extbase\Persistence\Repository;
 use TYPO3\CMS\Extbase\Persistence\RepositoryInterface;
 use Causal\IgLdapSsoAuth\Domain\Model\FrontendUser;
+use TYPO3\CMS\Extbase\Persistence\Generic\Mapper\DataMapper;
 
 /**
  * Class Typo3UserRepository for the 'ig_ldap_sso_auth' extension.
@@ -434,6 +435,7 @@ class Typo3UserRepository
         return $instance->getHashedPassword($password);
     }
 
+    protected $objectManager;
 
     public function findByUid($uid): FrontendUser {
 
@@ -449,7 +451,10 @@ class Typo3UserRepository
                 $queryBuilder->expr()->eq('uid', $uid)
             );
 
-        return $query->execute()->fetch();
+        $dataMapper = $this->objectManager->get(DataMapper::class);
+        return $dataMapper->map(FrontendUser::class, $query->fetch());
+
+        //return $query->execute()->fetch();
 
 
     }
