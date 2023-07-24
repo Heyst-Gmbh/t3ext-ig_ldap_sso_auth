@@ -26,7 +26,7 @@ class FrontendUser extends AbstractEntity
     /**
      * @var string
      */
-    protected $username = '';
+    public $username = '';
 
     /**
      * @var string
@@ -41,22 +41,22 @@ class FrontendUser extends AbstractEntity
     /**
      * @var string
      */
-    protected $name = '';
+    public $name = '';
 
     /**
      * @var string
      */
-    protected $firstName = '';
+    public $firstName = '';
 
     /**
      * @var string
      */
-    protected $middleName = '';
+    public $middleName = '';
 
     /**
      * @var string
      */
-    protected $lastName = '';
+    public $lastName = '';
 
     /**
      * @var string
@@ -76,7 +76,7 @@ class FrontendUser extends AbstractEntity
     /**
      * @var string
      */
-    protected $email = '';
+    public $email = '';
 
     /**
      * @var string
