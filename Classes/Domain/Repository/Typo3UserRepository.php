@@ -451,8 +451,6 @@ class Typo3UserRepository
             ->execute()->fetch();
 
         $user = GeneralUtility::makeInstance(FrontendUser::class);
-        $user->setUid($query['uid']);
-        $user->setPid($query['pid']);
         $user->setFirstname($query['firstName']);
         $user->setLastname($query['lastName']);
         $user->setEmail($query['email']);
