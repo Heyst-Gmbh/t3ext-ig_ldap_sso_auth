@@ -449,18 +449,9 @@ class Typo3UserRepository
                 $queryBuilder->expr()->eq('uid', $uid)
             );
 
-
-        $user = $query->execute()->fetch();
-
-
-        $userObj = GeneralUtility::makeInstance(FrontendUser::class);
+        return $query->execute()->fetch();
 
 
-        //return $query->execute()->fetch();
-
-        $userObj = $user;
-
-        return $userObj;
     }
 
 }
