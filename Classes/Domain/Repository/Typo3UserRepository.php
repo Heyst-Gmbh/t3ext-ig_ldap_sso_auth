@@ -451,7 +451,8 @@ class Typo3UserRepository
             ->execute()->fetch();
 
         $dataMapper = GeneralUtility::makeInstance(DataMapper::class);
-        return $dataMapper->map(FrontendUser::class, [$query]);
+        $dataMapper->map(FrontendUser::class, [$query]);
+        return $dataMapper[0];
 
         //return $query->execute()->fetch();
 
