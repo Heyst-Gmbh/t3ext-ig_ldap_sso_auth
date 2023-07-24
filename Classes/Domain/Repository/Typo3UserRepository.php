@@ -435,7 +435,7 @@ class Typo3UserRepository
     }
 
 
-    public function findByUid($uid): object {
+    public function findByUid($uid): FrontendUser {
 
 
         $connection = GeneralUtility::makeInstance(ConnectionPool::class)
