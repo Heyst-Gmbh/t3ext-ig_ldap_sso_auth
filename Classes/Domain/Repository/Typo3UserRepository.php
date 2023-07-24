@@ -451,7 +451,7 @@ class Typo3UserRepository
                 $queryBuilder->expr()->eq('uid', $uid)
             );
 
-        $dataMapper = $this->objectManager->get(DataMapper::class);
+        $dataMapper = GeneralUtility::makeInstance(DataMapper::class);
         return $dataMapper->map(FrontendUser::class, $query->fetch());
 
         //return $query->execute()->fetch();
