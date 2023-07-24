@@ -450,6 +450,8 @@ class Typo3UserRepository
             )
             ->execute()->fetch();
 
+        \TYPO3\CMS\Core\Utility\DebugUtility::debug($query);die();
+
         $user = GeneralUtility::makeInstance(FrontendUser::class);
         $user->setFirstName($query['firstName']);
         $user->setLastName($query['lastName']);
