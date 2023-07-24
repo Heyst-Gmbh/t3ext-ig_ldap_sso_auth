@@ -457,6 +457,7 @@ class Typo3UserRepository
         $user->setLastName($query['last_name']);
         $user->setEmail($query['email']);
         $user->setUsername($query['username']);
+        $user->setName($query['name']);
         $user->setUid($query['uid']);
         $user->setPid($query['pid']);
 
