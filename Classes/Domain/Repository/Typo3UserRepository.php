@@ -448,10 +448,10 @@ class Typo3UserRepository
             ->where(
                 $queryBuilder->expr()->eq('uid', $uid)
             )
-            ->execute();
+            ->execute()->fetch();
 
         $dataMapper = GeneralUtility::makeInstance(DataMapper::class);
-        return $dataMapper->map(FrontendUser::class, $query->fetch());
+        return $dataMapper->map(FrontendUser::class, [$query]);
 
         //return $query->execute()->fetch();
 
