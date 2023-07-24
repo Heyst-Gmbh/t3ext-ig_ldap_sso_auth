@@ -435,8 +435,6 @@ class Typo3UserRepository
         return $instance->getHashedPassword($password);
     }
 
-    protected $objectManager;
-
     public function findByUid($uid): FrontendUser {
 
 
@@ -452,7 +450,7 @@ class Typo3UserRepository
             );
 
         $dataMapper = GeneralUtility::makeInstance(DataMapper::class);
-        return $dataMapper->map(FrontendUser::class, $query->fetch());
+        return $dataMapper->map(FrontendUser::class, $query->execute()->fetch());
 
         //return $query->execute()->fetch();
 
