@@ -17,3 +17,9 @@ $tempColumns = [
 
 // Remove password field for LDAP users.
 $GLOBALS['TCA']['fe_users']['columns']['password']['displayCond'] = 'FIELD:tx_igldapssoauth_dn:REQ:false';
+
+// Change size of title Field
+$GLOBALS['TCA']['fe_users']['columns']['title']['config']['size'] = 255;
+$GLOBALS['TCA']['fe_users']['columns']['title']['config']['max'] = 255;
+$GLOBALS['TCA']['fe_users']['columns']['fax']['config']['size'] = 255;
+$GLOBALS['TCA']['fe_users']['columns']['fax']['config']['max'] = 255;
